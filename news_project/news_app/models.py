@@ -37,3 +37,12 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+class Contact(models.Model):
+    name=models.CharField(max_length=150)
+    email=models.EmailField(max_length=150)
+    message=models.TextField()
+
+    def __str__(self):
+        return self.email
+
