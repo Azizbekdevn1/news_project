@@ -22,11 +22,11 @@ def news_detail(request, id):
     return render(request, 'news/news_detail.html', context=context)
 
 def homePageView(request):
-    news=News.published.all()
+    news_lists=News.published.all().order_by('-published_time')[:4]
     categories=Category.objects.all()
     context={
-        'news': news,
-        'categories': categories
+        'news_lists': news_lists,
+        'categories': categories,
     }
     return render(request,'news/index.html',context=context)
 
