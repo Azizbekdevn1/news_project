@@ -22,11 +22,15 @@ def news_detail(request, id):
     return render(request, 'news/news_detail.html', context=context)
 
 def homePageView(request):
-    news_lists=News.published.all().order_by('-published_time')[:4]
+    news_lists=News.published.all().order_by('-published_time')
     categories=Category.objects.all()
+    local_one=News.published.filter(category__name="Mahalliy").order_by("-published_time")[:1]
+    local_news=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[1:6]
     context={
         'news_lists': news_lists,
         'categories': categories,
+        'local_news':local_news,
+        'local_one':local_one,
     }
     return render(request,'news/index.html',context=context)
 

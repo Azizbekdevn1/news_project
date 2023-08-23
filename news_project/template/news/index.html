@@ -21,7 +21,7 @@
       </div>
       <div class="col-lg-4 col-md-4 col-sm-4">
         <div class="latest_post">
-          <h2><span>Latest post</span></h2>
+          <h2><span>So'nggi yangiliklar</span></h2>
           <div class="latest_post_container">
             <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
             <ul class="latest_postnav">
@@ -44,39 +44,28 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="left_content">
           <div class="single_post_content">
-            <h2><span>Business</span></h2>
+            <h2><span>Mahalliy</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
+                {% for main_local in local_one %}
                 <li>
-                  <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="{% static 'images/featured_img1.jpg' %}"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                    <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
+                  <figure class="bsbig_fig"> <a href="{% url 'news_detail' main_local.pk %}" class="featured_img"> <img alt="" src="{{main_local.image.url}}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'news_detail' main_local.pk %}">{{main_local.title | truncatewords:5}}</a> </figcaption>
+                    <p>{{main_local.title}}</p>
                   </figure>
                 </li>
+                {% endfor %}
               </ul>
             </div>
             <div class="single_post_content_right">
               <ul class="spost_nav">
+                {% for local in local_news %}
                 <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                  <div class="media wow fadeInDown"> <a href="{% url 'news_detail' local.pk %}" class="media-left"> <img alt="" src="{{local.image.url}}"> </a>
+                    <div class="media-body"> <a href="{% url 'news_detail' local.pk %}" class="catg_title">{{local.title}}</a> </div>
                   </div>
                 </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                    <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                  </div>
-                </li>
+                {% endfor %}
               </ul>
             </div>
           </div>
@@ -229,7 +218,7 @@
       <div class="col-lg-4 col-md-4 col-sm-4">
         <aside class="right_content">
           <div class="single_sidebar">
-            <h2><span>Popular Post</span></h2>
+            <h2><span>Ommabop</span></h2>
             <ul class="spost_nav">
               <li>
                 <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
