@@ -2,8 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from .models import Category, News
 from .forms import ContactForm
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView, ListView
 
 
 def news_list(request):
@@ -22,7 +21,7 @@ def news_detail(request, id):
     return render(request, 'news/news_detail.html', context=context)
 
 def homePageView(request):
-    news_lists=News.published.all().order_by('-published_time')
+    news_lists=News.published.all().order_by('-published_time')[:5]
     categories=Category.objects.all()
     local_one=News.published.filter(category__name="Mahalliy").order_by("-published_time")[:1]
     local_news=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[1:6]
@@ -33,6 +32,20 @@ def homePageView(request):
         'local_one':local_one,
     }
     return render(request,'news/index.html',context=context)
+
+
+class HomePageView(ListView):
+    model = News
+    template_name = 'news/index.html'
+    context_object_name = 'news'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context['categories']=Category.objects.all()
+        context['news_lists']=News.published.all().order_by('-published_time')[:5]
+        context['local_news']=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[1:6]
+        context['local_one'] = News.published.filter(category__name="Mahalliy").order_by("-published_time")[:1]
+        return context
 
 # def contactPageView(request):
 #     print(request.POST)
