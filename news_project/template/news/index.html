@@ -47,24 +47,28 @@
             <h2><span>Mahalliy</span></h2>
             <div class="single_post_content_left">
               <ul class="business_catgnav  wow fadeInDown">
-                {% for main_local in local_one %}
+                {% for mahalliy in mahalliy_xabarlar %}
+                   {% if forloop.first %}
                 <li>
-                  <figure class="bsbig_fig"> <a href="{% url 'news_detail' main_local.pk %}" class="featured_img"> <img alt="" src="{{main_local.image.url}}"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url 'news_detail' main_local.pk %}">{{main_local.title | truncatewords:5}}</a> </figcaption>
-                    <p>{{main_local.title}}</p>
+                  <figure class="bsbig_fig"> <a href="{% url 'news_detail' mahalliy.pk %}" class="featured_img"> <img alt="" src="{{mahalliy.image.url}}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{% url 'news_detail' mahalliy.pk %}">{{mahalliy.title | truncatewords:5}}</a> </figcaption>
+                    <p>{{mahalliy.title}}</p>
                   </figure>
                 </li>
+                   {% endif %}
                 {% endfor %}
               </ul>
             </div>
             <div class="single_post_content_right">
               <ul class="spost_nav">
-                {% for local in local_news %}
+                {% for local in mahalliy_xabarlar %}
+                    {% if forloop.counter > 1 %}
                 <li>
                   <div class="media wow fadeInDown"> <a href="{% url 'news_detail' local.pk %}" class="media-left"> <img alt="" src="{{local.image.url}}"> </a>
-                    <div class="media-body"> <a href="{% url 'news_detail' local.pk %}" class="catg_title">{{local.title}}</a> </div>
+                    <div class="media-body"> <a href="{% url 'news_detail' local.pk %}" class="catg_title">{{local.title | truncatewords:5}}</a> </div>
                   </div>
                 </li>
+                    {% endif %}
                 {% endfor %}
               </ul>
             </div>
@@ -74,34 +78,27 @@
               <div class="single_post_content">
                 <h2><span>Xorij xabarlari</span></h2>
                 <ul class="business_catgnav wow fadeInDown">
+                  {% for xorij in xorij_xabarlar %}
+                      {% if forloop.first %}
                   <li>
-                    <figure class="bsbig_fig"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="{% static 'images/featured_img2.jpg' %}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                      <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
+                    <figure class="bsbig_fig"> <a href="{% url 'news_detail' xorij.pk %}" class="featured_img"> <img alt="" src="{{xorij.image.url}}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="{% url 'news_detail' xorij.pk %}">{{xorij.title}}</a> </figcaption>
+                      <p>{{xorij.body | truncatewords:20}}</p>
                     </figure>
                   </li>
+                      {% endif %}
+                  {% endfor %}
                 </ul>
                 <ul class="spost_nav">
+                  {% for xorij in xorij_xabarlar %}
+                      {% if forloop.counter > 1 %}
                   <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                    <div class="media wow fadeInDown"> <a href="{% url 'news_detail' xorij.pk %}" class="media-left"> <img alt="" src="{{xorij.image.url}}"> </a>
+                      <div class="media-body"> <a href="{% url 'news_detail' xorij.pk %}" class="catg_title"> {{xorij.title | truncatewords:5}}</a> </div>
                     </div>
                   </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                    </div>
-                  </li>
+                      {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -109,34 +106,27 @@
               <div class="single_post_content">
                 <h2><span>Texnologiya</span></h2>
                 <ul class="business_catgnav">
+                  {% for texno in texnologiya_xabarlar %}
+                      {% if forloop.first %}
                   <li>
-                    <figure class="bsbig_fig wow fadeInDown"> <a href="pages/single_page.html" class="featured_img"> <img alt="" src="{% static 'images/featured_img3.jpg' %}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="pages/single_page.html">Proin rhoncus consequat nisl eu ornare mauris</a> </figcaption>
-                      <p>Nunc tincidunt, elit non cursus euismod, lacus augue ornare metus, egestas imperdiet nulla nisl quis mauris. Suspendisse a phare...</p>
+                    <figure class="bsbig_fig wow fadeInDown"> <a href="{% url 'news_detail' texno.pk %}" class="featured_img"> <img alt="" src="{{texno.image.url}}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="{% url 'news_detail' texno.pk %}">{{texno.title | truncatewords:6}}</a> </figcaption>
+                      <p>{{ texno.body | truncatewords:18 }}</p>
                     </figure>
                   </li>
+                      {% endif %}
+                  {% endfor %}
                 </ul>
                 <ul class="spost_nav">
+                  {% for texno in texnologiya_xabarlar %}
+                      {% if forloop.counter > 1 %}
                   <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 1</a> </div>
+                    <div class="media wow fadeInDown"> <a href="{% url 'news_detail' texno.pk %}" class="media-left"> <img alt="" src="{{texno.image.url}}"> </a>
+                      <div class="media-body"> <a href="{% url 'news_detail' texno.pk %}" class="catg_title"> {{texno.title | truncatewords:5}}</a> </div>
                     </div>
                   </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 2</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img1.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 3</a> </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="media wow fadeInDown"> <a href="pages/single_page.html" class="media-left"> <img alt="" src="{% static 'images/post_img2.jpg' %}"> </a>
-                      <div class="media-body"> <a href="pages/single_page.html" class="catg_title"> Aliquam malesuada diam eget turpis varius 4</a> </div>
-                    </div>
-                  </li>
+                      {% endif %}
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -291,13 +281,13 @@
             <h2><span>Sponsor</span></h2>
             <a class="sideAdd" href="#"><img src="{% static 'images/add_img.jpg' %}" alt=""></a> </div>
           <div class="single_sidebar wow fadeInDown">
-            <h2><span>Category Archive</span></h2>
+            <h2><span>Kategoriyalar </span></h2>
             <select class="catgArchive">
-              <option>Select Category</option>
-              <option>Life styles</option>
-              <option>Sports</option>
-              <option>Technology</option>
-              <option>Treads</option>
+              <option>Kategoriyani tanlang</option>
+              <option>Mahalliy</option>
+              <option>Sport</option>
+              <option>Texnologiya</option>
+              <option>Xorij</option>
             </select>
           </div>
           <div class="single_sidebar wow fadeInDown">

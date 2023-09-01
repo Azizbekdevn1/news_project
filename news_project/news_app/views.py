@@ -43,8 +43,12 @@ class HomePageView(ListView):
         context=super().get_context_data(**kwargs)
         context['categories']=Category.objects.all()
         context['news_lists']=News.published.all().order_by('-published_time')[:5]
-        context['local_news']=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[1:6]
-        context['local_one'] = News.published.filter(category__name="Mahalliy").order_by("-published_time")[:1]
+        context['mahalliy_xabarlar']=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[:5]
+        context['xorij_xabarlar']=News.published.all().filter(category__name="Xorij").order_by("-published_time")[:5]
+        context['sport_xabarlar']=News.published.all().filter(category__name="Sport").order_by("-published_time")[:5]
+        context['texnologiya_xabarlar']=News.published.all().filter(category__name="Texnologiya").order_by("-published_time")[:5]
+
+
         return context
 
 # def contactPageView(request):
