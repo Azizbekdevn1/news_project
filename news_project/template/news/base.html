@@ -37,13 +37,13 @@
         <div class="header_top">
           <div class="header_top_left">
             <ul class="top_nav">
-              <li><a href="{% url 'home_page'%}">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="{% url 'contact_page'%}">Contact</a></li>
+              <li><a href="{% url 'home_page'%}">Bosh sahifa</a></li>
+              <li><a href="#">Biz haqimizda</a></li>
+              <li><a href="{% url 'contact_page'%}">Biz bilan aloqa</a></li>
             </ul>
           </div>
           <div class="header_top_right">
-            <p>Friday, December 05, 2045</p>
+            <p>{% now "jS F Y H:i" %}</p>
           </div>
         </div>
       </div>
@@ -68,20 +68,11 @@
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
-          <li class="active"><a href="index.html"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Home</span></a></li>
-          <li><a href="#">Technology</a></li>
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Mobile</a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Android</a></li>
-              <li><a href="#">Samsung</a></li>
-              <li><a href="#">Nokia</a></li>
-              <li><a href="#">Walton Mobile</a></li>
-              <li><a href="#">Sympony</a></li>
-            </ul>
-          </li>
-          <li><a href="#">Laptops</a></li>
-          <li><a href="#">Tablets</a></li>
-          <li><a href="{% url 'contact_page'%}">Contact Us</a></li>
+          <li class="active"><a href="{% url 'home_page' %}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Bosh sahifa</span></a></li>
+          <li><a href="#">Mahalliy</a></li>
+          <li><a href="#">Xorij</a></li>
+          <li><a href="#">Texnologiya</a></li>
+          <li><a href="{% url 'contact_page'%}">Biz bilan aloqa</a></li>
           <li><a href="pages/404.html">404 Page</a></li>
         </ul>
       </div>
@@ -90,7 +81,7 @@
   <section id="newsSection">
     <div class="row">
       <div class="col-lg-12 col-md-12">
-        <div class="latest_newsarea"> <span>Latest News</span>
+        <div class="latest_newsarea"> <span>So'nggi yangiliklar</span>
           <ul id="ticker01" class="news_sticker">
             {% for news in latest_news %}
             <li><a href="#"><img src="{{ news.image.url }}" alt="">{{ news.title }}</a></li>
@@ -137,7 +128,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInRightBig">
-            <h2>Contact</h2>
+            <h2>Biz bilan aloqa</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
             <address>
            Uzbekistan country,Tashkent city ,Mirzo Ulugbek district TTZ-4 24-uy

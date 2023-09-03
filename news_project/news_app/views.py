@@ -13,15 +13,15 @@ def news_list(request):
     return render(request, 'news/news_list.html', context=context)
 
 
-def news_detail(request, id):
-    news = get_object_or_404(News, id=id, status=News.Status.Published)
+def news_detail(request, news):
+    news = get_object_or_404(News, slug=news, status=News.Status.Published)
     context = {
         'news': news
     }
     return render(request, 'news/news_detail.html', context=context)
 
 def homePageView(request):
-    news_lists=News.published.all().order_by('-published_time')[:5]
+    news_lists=News.published.all().order_by('-published_time')[:10]
     categories=Category.objects.all()
     local_one=News.published.filter(category__name="Mahalliy").order_by("-published_time")[:1]
     local_news=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[1:6]

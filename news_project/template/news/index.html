@@ -10,9 +10,9 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
           {% for news in news_lists %}
-          <div class="single_iteam"> <a href="{% url 'news_detail' news.pk %}"> <img src="{{news.image.url}}" alt="rasm"></a>
+          <div class="single_iteam"> <a href="{{news.get_absolute_url}}"> <img src="{{news.image.url}}" alt="rasm"></a>
             <div class="slider_article">
-              <h2><a class="slider_tittle" href="{% url 'news_detail' news.pk %}">{{ news.title | truncatewords:5}}</a></h2>
+              <h2><a class="slider_tittle" href="{{news.get_absolute_url}}">{{ news.title | truncatewords:5}}</a></h2>
               <p>{{news.title}}</p>
             </div>
           </div>
@@ -27,8 +27,8 @@
             <ul class="latest_postnav">
               {% for news in news_lists %}
               <li>
-                <div class="media"> <a href="{% url 'news_detail' news.pk %}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
-                  <div class="media-body"> <a href="{% url 'news_detail' news.pk %}" class="catg_title"> {{news.title}}</a> </div>
+                <div class="media"> <a href="{{news.get_absolute_url}}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                  <div class="media-body"> <a href="{{news.get_absolute_url}}" class="catg_title"> {{news.title}}</a> </div>
                 </div>
               </li>
               {% endfor %}
@@ -50,8 +50,8 @@
                 {% for mahalliy in mahalliy_xabarlar %}
                    {% if forloop.first %}
                 <li>
-                  <figure class="bsbig_fig"> <a href="{% url 'news_detail' mahalliy.pk %}" class="featured_img"> <img alt="" src="{{mahalliy.image.url}}"> <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url 'news_detail' mahalliy.pk %}">{{mahalliy.title | truncatewords:5}}</a> </figcaption>
+                  <figure class="bsbig_fig"> <a href="{{mahalliy.get_absolute_url}}" class="featured_img"> <img alt="" src="{{mahalliy.image.url}}"> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{mahalliy.get_absolute_url}}">{{mahalliy.title | truncatewords:5}}</a> </figcaption>
                     <p>{{mahalliy.title}}</p>
                   </figure>
                 </li>
@@ -64,8 +64,8 @@
                 {% for local in mahalliy_xabarlar %}
                     {% if forloop.counter > 1 %}
                 <li>
-                  <div class="media wow fadeInDown"> <a href="{% url 'news_detail' local.pk %}" class="media-left"> <img alt="" src="{{local.image.url}}"> </a>
-                    <div class="media-body"> <a href="{% url 'news_detail' local.pk %}" class="catg_title">{{local.title | truncatewords:5}}</a> </div>
+                  <div class="media wow fadeInDown"> <a href="{{local.get_absolute_url}}" class="media-left"> <img alt="" src="{{local.image.url}}"> </a>
+                    <div class="media-body"> <a href="{{local.get_absolute_url}}" class="catg_title">{{local.title | truncatewords:5}}</a> </div>
                   </div>
                 </li>
                     {% endif %}
@@ -81,8 +81,8 @@
                   {% for xorij in xorij_xabarlar %}
                       {% if forloop.first %}
                   <li>
-                    <figure class="bsbig_fig"> <a href="{% url 'news_detail' xorij.pk %}" class="featured_img"> <img alt="" src="{{xorij.image.url}}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="{% url 'news_detail' xorij.pk %}">{{xorij.title}}</a> </figcaption>
+                    <figure class="bsbig_fig"> <a href="{{xorij.get_absolute_url}}" class="featured_img"> <img alt="" src="{{xorij.image.url}}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="{{xorij.get_absolute_url}}">{{xorij.title}}</a> </figcaption>
                       <p>{{xorij.body | truncatewords:20}}</p>
                     </figure>
                   </li>
@@ -93,8 +93,8 @@
                   {% for xorij in xorij_xabarlar %}
                       {% if forloop.counter > 1 %}
                   <li>
-                    <div class="media wow fadeInDown"> <a href="{% url 'news_detail' xorij.pk %}" class="media-left"> <img alt="" src="{{xorij.image.url}}"> </a>
-                      <div class="media-body"> <a href="{% url 'news_detail' xorij.pk %}" class="catg_title"> {{xorij.title}}</a> </div>
+                    <div class="media wow fadeInDown"> <a href="{{xorij.get_absolute_url}}" class="media-left"> <img alt="" src="{{xorij.image.url}}"> </a>
+                      <div class="media-body"> <a href="{{xorij.get_absolute_url}}" class="catg_title"> {{xorij.title}}</a> </div>
                     </div>
                   </li>
                       {% endif %}
@@ -109,8 +109,8 @@
                   {% for texno in texnologiya_xabarlar %}
                       {% if forloop.first %}
                   <li>
-                    <figure class="bsbig_fig wow fadeInDown"> <a href="{% url 'news_detail' texno.pk %}" class="featured_img"> <img alt="" src="{{texno.image.url}}"> <span class="overlay"></span> </a>
-                      <figcaption> <a href="{% url 'news_detail' texno.pk %}">{{texno.title | truncatewords:7}}</a> </figcaption>
+                    <figure class="bsbig_fig wow fadeInDown"> <a href="{{texno.get_absolute_url}}" class="featured_img"> <img alt="" src="{{texno.image.url}}"> <span class="overlay"></span> </a>
+                      <figcaption> <a href="{{texno.get_absolute_url}}">{{texno.title | truncatewords:7}}</a> </figcaption>
                       <p>{{ texno.body | truncatewords:18 }}</p>
                     </figure>
                   </li>
@@ -121,8 +121,8 @@
                   {% for texno in texnologiya_xabarlar %}
                       {% if forloop.counter > 1 %}
                   <li>
-                    <div class="media wow fadeInDown"> <a href="{% url 'news_detail' texno.pk %}" class="media-left"> <img alt="" src="{{texno.image.url}}"> </a>
-                      <div class="media-body"> <a href="{% url 'news_detail' texno.pk %}" class="catg_title"> {{texno.title}}</a> </div>
+                    <div class="media wow fadeInDown"> <a href="{{texno.get_absolute_url}}" class="media-left"> <img alt="" src="{{texno.image.url}}"> </a>
+                      <div class="media-body"> <a href="{{texno.get_absolute_url}}" class="catg_title"> {{texno.title}}</a> </div>
                     </div>
                   </li>
                       {% endif %}
@@ -173,8 +173,8 @@
                 {% for sport in sport_xabarlar %}
                     {% if forloop.first %}
                 <li>
-                  <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="{% url 'news_detail' sport.pk %}"> <img src="{{sport.image.url}}" alt=""> <span class="overlay"></span> </a>
-                    <figcaption> <a href="{% url 'news_detail' sport.pk %}">{{sport.title}}</a> </figcaption>
+                  <figure class="bsbig_fig  wow fadeInDown"> <a class="featured_img" href="{{sport.get_absolute_url}}"> <img src="{{sport.image.url}}" alt=""> <span class="overlay"></span> </a>
+                    <figcaption> <a href="{{sport.get_absolute_url}}">{{sport.title}}</a> </figcaption>
                     <p>{{sport.body | truncatewords:20}}</p>
                   </figure>
                 </li>
@@ -187,8 +187,8 @@
                 {% for sport in sport_xabarlar %}
                     {% if forloop.counter > 1 %}
                 <li>
-                  <div class="media wow fadeInDown"> <a href="{% url 'news_detail' sport.pk %}" class="media-left"> <img alt="" src="{{sport.image.url}}"> </a>
-                    <div class="media-body"> <a href="{% url 'news_detail' sport.pk %}" class="catg_title"> {{sport.title}}</a> </div>
+                  <div class="media wow fadeInDown"> <a href="{{sport.get_absolute_url}}" class="media-left"> <img alt="" src="{{sport.image.url}}"> </a>
+                    <div class="media-body"> <a href="{{sport.get_absolute_url}}" class="catg_title"> {{sport.title}}</a> </div>
                   </div>
                 </li>
                     {% endif %}

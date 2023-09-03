@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -37,6 +38,9 @@ class News(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('news_detail',args=[self.slug])
 
 class Contact(models.Model):
     name=models.CharField(max_length=150)
