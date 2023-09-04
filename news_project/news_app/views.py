@@ -21,7 +21,7 @@ def news_detail(request, news):
     return render(request, 'news/news_detail.html', context=context)
 
 def homePageView(request):
-    news_lists=News.published.all().order_by('-published_time')[:10]
+    news_lists=News.published.all().order_by('-published_time')[:15]
     categories=Category.objects.all()
     local_one=News.published.filter(category__name="Mahalliy").order_by("-published_time")[:1]
     local_news=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[1:6]
@@ -42,7 +42,7 @@ class HomePageView(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context=super().get_context_data(**kwargs)
         context['categories']=Category.objects.all()
-        context['news_lists']=News.published.all().order_by('-published_time')[:5]
+        context['news_lists']=News.published.all().order_by('title')[:5]
         context['mahalliy_xabarlar']=News.published.all().filter(category__name="Mahalliy").order_by("-published_time")[:5]
         context['xorij_xabarlar']=News.published.all().filter(category__name="Xorij").order_by("-published_time")[:5]
         context['sport_xabarlar']=News.published.all().filter(category__name="Sport").order_by("-published_time")[:5]
@@ -76,3 +76,42 @@ class ContactPageView(TemplateView):
         }
         return render(request, 'news/contact.html',context)
 
+
+class LocalNewsView(ListView):
+    model = News
+    template_name = 'news/local.html'
+    context_object_name = 'local news'
+
+    def get_queryset(self):
+        news=self.model.published.all().filter(category__name="Mahalliy")
+        return news
+
+
+class XorijNewsView(ListView):
+    model = News
+    template_name = 'news/xorij.html'
+    context_object_name = 'xorij news'
+
+    def get_queryset(self):
+        news=self.model.published.all().filter(category__name="Xorij")
+        return news
+
+
+class TechnoNewsView(ListView):
+    model = News
+    template_name = 'news/techno.html'
+    context_object_name = 'techno news'
+
+    def get_queryset(self):
+        news=self.model.published.all().filter(category__name="Texnologiya")
+        return news
+
+
+class SportNewsView(ListView):
+    model = News
+    template_name = 'news/sport.html'
+    context_object_name = 'sport news'
+
+    def get_queryset(self):
+        news=self.model.published.all().filter(category__name="Sport")
+        return news
