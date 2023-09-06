@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'news/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+Mahalliy xabarlar
+{% endblock title %}
+
+{% block content %}
+
+
+
+
+<div class="latest__news-list">
+  {% for news in local_news %}
+  <div class="latest__news-text">
+      <div class="news__item is_photo clickable-block">
+        <div class="media-info ">
+            <div class="media is_left">
+                <img src="{{news.image.url}}"width="150" height="100" alt="Rasm">
+            </div><!-- End of media-->
+
+            <div class="info">
+                <p class="news__item-meta"><i class="icon clock-icon is_smaller"></i>
+                    1 soat oldin           </p>
+
+                <p class="news__item-title">
+                    <a data-pjax="0" href="https://www.xabar.uz/uz/mahalliy/joriy-oquv-yili-uchun-super-kontrakt-narxlari-belgilandi">
+                        {{news.title}}                  </a>
+                </p>
+            </div><!-- End of info-->
+        </div><!-- End of media-info-->
+      </div><!-- End of news__item-->
+  </div>
+    {% endfor %}
+</div>
+
+
+
+
+{% endblock content%}

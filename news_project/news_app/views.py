@@ -80,7 +80,7 @@ class ContactPageView(TemplateView):
 class LocalNewsView(ListView):
     model = News
     template_name = 'news/local.html'
-    context_object_name = 'local news'
+    context_object_name = 'local_news'
 
     def get_queryset(self):
         news=self.model.published.all().filter(category__name="Mahalliy")
