@@ -90,7 +90,7 @@ class LocalNewsView(ListView):
 class XorijNewsView(ListView):
     model = News
     template_name = 'news/xorij.html'
-    context_object_name = 'xorij news'
+    context_object_name = 'xorij_news'
 
     def get_queryset(self):
         news=self.model.published.all().filter(category__name="Xorij")
@@ -100,7 +100,7 @@ class XorijNewsView(ListView):
 class TechnoNewsView(ListView):
     model = News
     template_name = 'news/techno.html'
-    context_object_name = 'techno news'
+    context_object_name = 'techno_news'
 
     def get_queryset(self):
         news=self.model.published.all().filter(category__name="Texnologiya")
@@ -110,7 +110,7 @@ class TechnoNewsView(ListView):
 class SportNewsView(ListView):
     model = News
     template_name = 'news/sport.html'
-    context_object_name = 'sport news'
+    context_object_name = 'sport_news'
 
     def get_queryset(self):
         news=self.model.published.all().filter(category__name="Sport")

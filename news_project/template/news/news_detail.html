@@ -1,12 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>News detail page</title>
-</head>
-<body>
-   <h1>{{ news.title }}</h1>
-    <p> Published date:{{ news.published_time }} </p>
-    <p>{{ news.body | linebreaks }}</p>
-</body>
-</html>
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}
+{{news.title}}
+{% endblock title %}
+
+
+
+{% block content %}
+
+                    <div class="article__content" >
+                        <h2 class="post__title" style="font-size:20px;text-align:center">{{news.title}}</h2>
+
+                        <div class="article__content-meta"style="font-size:15px;text-align:center">
+                            <span class="date-time" >
+                                <i class="icon clock-icon is_smaller" >
+                                    {{news.published_time}}
+                                </i>
+                            </span>
+                            <span class="h-space"></span>
+                            <span class="update-time"></span>
+                            <span class="h-space"></span>
+                        </div>
+
+                        <div class="media" style="margin:auto 0;">
+                            <img src="{{news.image.url}}"
+                                alt="AQSh hukumati Grin karta uchun ajratilgan 55 mingta vizani tarqatib bo‘ldi">
+                        </div>
+                        <div class="post__body">
+                            <p style="text-align: justify;">
+                                {{news.body}}
+                            </p>
+
+                        </div>
+
+
+
+                    </div>
+{% endblock %}

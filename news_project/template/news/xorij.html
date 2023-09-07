@@ -1,10 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'news/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+Xorijiy xabarlar
+{% endblock title %}
+
+{% block content %}
+
+
+<div class="container">
+    <div class="main__section">
+        <div class="main__section-content">
+            <div class="main__content">
+
+                  {% for item in xorij_news %}
+                    <div class="latest__news-text col-sm-5" style="display:flex" >
+                        <div class="news__item is_photo clickable-block ">
+                            <div class="media-info">
+                                <div class="media is_left">
+                                        <img src="{{item.image.url}}" width="150" height="100" style="border-radius:5px">
+                                </div><!-- End of media-->
+
+                                <div class="info">
+                                    <p class="news__item-meta" style="font-size:11px;margin-left:8px;margin-top:5px;"><i class="icon clock-icon is_smaller"></i>
+                                        {{item.published_time}}
+                                    </p>
+
+                                    <h1 class="news__item-title" style="font-size:13px;margin-left:8px;margin-top:5px;">
+                                        <a data-pjax="0" href="#">
+                                            {{item.title}}
+                                        </a>
+                                    </h1>
+                                </div><!-- End of info-->
+                            </div><!-- End of media-info-->
+                        </div><!-- End of news__item-->
+                    </div>
+                  {% endfor %}
+
+            </div>
+        </div>
+    </div>>
+</div>
+
+{% endblock content%}

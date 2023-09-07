@@ -8,33 +8,38 @@ Mahalliy xabarlar
 {% block content %}
 
 
+<div class="container">
+    <div class="main__section">
+        <div class="main__section-content">
+            <div class="main__content">
 
+                  {% for item in local_news %}
+                    <div class="latest__news-text col-sm-5" style="display:flex" >
+                        <div class="news__item is_photo clickable-block ">
+                            <div class="media-info">
+                                <div class="media is_left">
+                                        <img src="{{item.image.url}}" width="150" height="100" style="border-radius:5px">
+                                </div><!-- End of media-->
 
-<div class="latest__news-list">
-  {% for news in local_news %}
-  <div class="latest__news-text">
-      <div class="news__item is_photo clickable-block">
-        <div class="media-info ">
-            <div class="media is_left">
-                <img src="{{news.image.url}}"width="150" height="100" alt="Rasm">
-            </div><!-- End of media-->
+                                <div class="info">
+                                    <p class="news__item-meta" style="font-size:11px;margin-left:8px;margin-top:5px;"><i class="icon clock-icon is_smaller"></i>
+                                        {{item.published_time}}
+                                    </p>
 
-            <div class="info">
-                <p class="news__item-meta"><i class="icon clock-icon is_smaller"></i>
-                    1 soat oldin           </p>
+                                    <h1 class="news__item-title" style="font-size:13px;margin-left:8px;margin-top:5px;">
+                                        <a data-pjax="0" href="{% url 'news_detail' %}">
+                                            {{item.title}}
+                                        </a>
+                                    </h1>
+                                </div><!-- End of info-->
+                            </div><!-- End of media-info-->
+                        </div><!-- End of news__item-->
+                    </div>
+                  {% endfor %}
 
-                <p class="news__item-title">
-                    <a data-pjax="0" href="https://www.xabar.uz/uz/mahalliy/joriy-oquv-yili-uchun-super-kontrakt-narxlari-belgilandi">
-                        {{news.title}}                  </a>
-                </p>
-            </div><!-- End of info-->
-        </div><!-- End of media-info-->
-      </div><!-- End of news__item-->
-  </div>
-    {% endfor %}
+            </div>
+        </div>
+    </div>>
 </div>
-
-
-
 
 {% endblock content%}
