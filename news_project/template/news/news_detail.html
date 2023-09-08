@@ -23,18 +23,20 @@
                             <span class="h-space"></span>
                         </div>
 
-                        <div class="media" style="margin:auto 0;">
-                            <img src="{{news.image.url}}"
+                        <div class="media"   align="center" style="margin-bottom:20px">
+                            <img src="{{news.image.url}}" width="50%" style="border-radius:5px"
                                 alt="AQSh hukumati Grin karta uchun ajratilgan 55 mingta vizani tarqatib bo‘ldi">
+
                         </div>
-                        <div class="post__body">
+                        <br>
+
+                        <div class="post__body"  style="width:50%;margin:0 auto">
+                            <h4 class="post__title" style="font-size:15px;text-align:center">{{news.body|truncatewords:10}}</h4>
                             <p style="text-align: justify;">
                                 {{news.body}}
                             </p>
+                            <br>
 
                         </div>
-
-
-
                     </div>
 {% endblock %}

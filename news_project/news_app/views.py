@@ -20,6 +20,7 @@ def news_detail(request, news):
     }
     return render(request, 'news/news_detail.html', context=context)
 
+
 def homePageView(request):
     news_lists=News.published.all().order_by('-published_time')[:15]
     categories=Category.objects.all()
