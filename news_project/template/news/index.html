@@ -10,7 +10,7 @@
       <div class="col-lg-8 col-md-8 col-sm-8">
         <div class="slick_slider">
           {% for news in news_lists %}
-          <div class="single_iteam"> <a href="{{news.get_absolute_url}}"> <img src="{{news.image.url}}" alt="rasm"></a>
+          <div class="single_iteam"> <a href="{{news.get_absolute_url}}"> <img src="{{news.image.url}}" alt="rasm" style="border-radius:10px"></a>
             <div class="slider_article">
               <h2><a class="slider_tittle" href="{{news.get_absolute_url}}">{{ news.title | truncatewords:5}}</a></h2>
               <p>{{news.title}}</p>
@@ -27,7 +27,7 @@
             <ul class="latest_postnav">
               {% for news in news_lists %}
               <li>
-                <div class="media"> <a href="{{news.get_absolute_url}}" class="media-left"> <img alt="" src="{{news.image.url}}"> </a>
+                <div class="media"> <a href="{{news.get_absolute_url}}" class="media-left"> <img alt="" style="border-radius:5px" src="{{news.image.url}}"> </a>
                   <div class="media-body"> <a href="{{news.get_absolute_url}}" class="catg_title"> {{news.title}}</a> </div>
                 </div>
               </li>
@@ -50,7 +50,7 @@
                 {% for mahalliy in mahalliy_xabarlar %}
                    {% if forloop.first %}
                 <li>
-                  <figure class="bsbig_fig"> <a href="{{mahalliy.get_absolute_url}}" class="featured_img"> <img alt="" src="{{mahalliy.image.url}}"> <span class="overlay"></span> </a>
+                  <figure class="bsbig_fig"> <a href="{{mahalliy.get_absolute_url}}" class="featured_img"> <img alt="" src="{{mahalliy.image.url}}" style="border-radius:8px"> <span class="overlay"></span> </a>
                     <figcaption> <a href="{{mahalliy.get_absolute_url}}">{{mahalliy.title | truncatewords:5}}</a> </figcaption>
                     <p>{{mahalliy.title}}</p>
                   </figure>
@@ -64,7 +64,7 @@
                 {% for local in mahalliy_xabarlar %}
                     {% if forloop.counter > 1 %}
                 <li>
-                  <div class="media wow fadeInDown"> <a href="{{local.get_absolute_url}}" class="media-left"> <img alt="" src="{{local.image.url}}"> </a>
+                  <div class="media wow fadeInDown"> <a href="{{local.get_absolute_url}}" class="media-left"> <img alt="" src="{{local.image.url}}" style="border-radius:5px"> </a>
                     <div class="media-body"> <a href="{{local.get_absolute_url}}" class="catg_title">{{local.title | truncatewords:5}}</a> </div>
                   </div>
                 </li>

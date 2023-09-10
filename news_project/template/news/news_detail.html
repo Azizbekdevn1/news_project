@@ -10,7 +10,9 @@
 {% block content %}
 
                     <div class="article__content" >
-                        <h2 class="post__title" style="font-size:20px;text-align:center">{{news.title}}</h2>
+                        <div style="width:50%;margin:0 auto">
+                            <h2 class="post__title" style="font-size:20px;text-align:center">{{news.title}}</h2>
+                        </div>
 
                         <div class="article__content-meta"style="font-size:15px;text-align:center">
                             <span class="date-time" >
@@ -18,9 +20,6 @@
                                     {{news.published_time}}
                                 </i>
                             </span>
-                            <span class="h-space"></span>
-                            <span class="update-time"></span>
-                            <span class="h-space"></span>
                         </div>
 
                         <div class="media"   align="center" style="margin-bottom:20px">
@@ -39,4 +38,14 @@
 
                         </div>
                     </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'news_update' news.slug %}" class="btn btn-primary" style="margin:10px;border-radius:5px">
+                            Tahrirlash
+                        </a>
+
+                        <a href="{% url 'news_delete' news.slug %}" class="btn btn-danger" style="margin:10px;border-radius:5px">
+                            O‘chirish
+                        </a>
+                    </div>
+
 {% endblock %}

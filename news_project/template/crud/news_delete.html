@@ -1,0 +1,19 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}
+{{news.title}}
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center" >Joriy yangilikni o'chirish</h2>
+    <form method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <p>{{news.title | truncatewords:3}} ...sarlavhali yangilik o'chirmoqchimisiz</p>
+        <button type="submit" class="btn btn-danger" style="margin:10px;border-radius:5px">Tastiqlayman</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}
+{{news.title}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+        <h2 class="text-center" >Joriy yangilikni tahrirlash</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary ml-2" style="margin:10px;border-radius:5px">Tahrirlash</button>
+        </form>
+</div>
+{% endblock %}
