@@ -1,0 +1,19 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+
+{% block title %}
+Yangilik qo'shish
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+        <h2 class="text-center" >Yangi yangilik qo'shish</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary ml-2" style="margin:10px;border-radius:5px">Yangilik qo'shish</button>
+        </form>
+</div>
+{% endblock %}

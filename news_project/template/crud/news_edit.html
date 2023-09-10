@@ -1,5 +1,6 @@
 {% extends 'news/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 {{news.title}}
@@ -11,7 +12,7 @@
         <h2 class="text-center" >Joriy yangilikni tahrirlash</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{form.as_p}}
+            {{ form|crispy }}
             <button type="submit" class="btn btn-primary ml-2" style="margin:10px;border-radius:5px">Tahrirlash</button>
         </form>
 </div>
