@@ -136,3 +136,7 @@ MEDIA_ROOT = BASE_DIR/'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+
+
+LOGIN_REDIRECT_URL ="home_page"
