@@ -1,0 +1,27 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+
+{% block title %}
+User profile
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h3>
+        Xush kelibsiz ,{{ user.username }}
+    </h3>
+    <h2>Siz haqingizdagi ma'lumotlar</h2>
+    <label>Username:</label><input value="{{user.username}}" readonly><br />
+    <label>Email:</label><input value="{{user.email}}" readonly><br />
+    <label>Ismingiz:</label><input value="{{user.first_name}}" readonly><br />
+    <label>Familiyangiz:</label><input value="{{user.last_name}}" readonly><br />
+
+
+
+    <h4>
+       <a href="{% url "></a> Parolni almashtirish
+    </h4>
+</div>
+
+{% endblock content %}
