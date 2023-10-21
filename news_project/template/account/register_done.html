@@ -1,0 +1,17 @@
+{% extends 'news/base.html' %}
+
+{% block title %}
+Mufaqqiyatli ro'yhatdan o'tdingiz
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <h1>{{ new_user.first_name }},Welcome News </h1>
+    <p>
+       Mufaqqiyatli ro'yhatdan o'tdingiz !
+    </p>
+    <p>
+        Endi saytga <a href="{% url 'login' %}" >login</a> qilishingiz mumkin
+    </p>
+</div>
+{% endblock content %}
