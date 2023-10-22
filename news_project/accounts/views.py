@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login
 from .forms import LoginForm,UserRegistrationForm
-
+from django.views.generic import CreateView
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
 
 def user_login(request):
     if request.method == 'POST':
@@ -32,7 +34,7 @@ def dashboard_view(request):
     }
     return render(request,'pages/user_profile.html', context)
 
-
+#0 dan qolda yozildi
 def user_register(request):
     if request.method == 'POST':
         user_form =UserRegistrationForm(request.POST)
@@ -51,3 +53,12 @@ def user_register(request):
     else:
         user_form = UserRegistrationForm()
         return render(request, 'account/register.html', {'user_form':user_form})
+
+#Tayyor django Createtion formdan foydalanib yaratildi
+class SignUpView(CreateView):
+   form_class = UserCreationForm
+   success_url = reverse_lazy('login')
+   template_name = 'account/register.html'
+
+
+
