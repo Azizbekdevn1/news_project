@@ -5,6 +5,8 @@ from .forms import LoginForm,UserRegistrationForm
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
+from .models import Profile
+from .forms import UserUpdateFrom,ProfileUpdateFrom
 
 def user_login(request):
     if request.method == 'POST':
@@ -44,6 +46,7 @@ def user_register(request):
                 user_form.cleaned_data['password']
             )
             new_user.save()
+            Profile.objects.create(user=new_user)
             context={
                 "new_user":new_user
             }
@@ -61,4 +64,15 @@ class SignUpView(CreateView):
    template_name = 'account/register.html'
 
 
-
+def Edit_user(request):
+    if request.method =='POST':
+        user_form =UserUpdateFrom(instance=request.user,data=request.POST)
+        profile_form=ProfileUpdateFrom(instance=request.user.profile,data=request.POST,
+                                       files=request.POST)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+    else:
+        user_form=UserUpdateFrom(instance=request.user)
+        profile_form=ProfileUpdateFrom(instance=request.user.profile)
+    return render(request,'account/profile_edit.html',{'user_form':user_form,'profile_form':profile_form})

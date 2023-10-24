@@ -11,7 +11,7 @@ Foydalanuvchilarni ro'yhatdan o'tkazish
     </p>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {{ user_form.as_p }}
         <button type="submit">Ro'yhatdan o'tish</button>
     </form>
 </div>
