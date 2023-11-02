@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login
+from django.views import View
+
 from .forms import LoginForm,UserRegistrationForm
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
@@ -76,3 +78,22 @@ def Edit_user(request):
         user_form=UserUpdateFrom(instance=request.user)
         profile_form=ProfileUpdateFrom(instance=request.user.profile)
     return render(request,'account/profile_edit.html',{'user_form':user_form,'profile_form':profile_form})
+
+class EditUserView(View):
+
+    def get(self, request):
+
+        user_form = UserUpdateFrom(instance=request.user)
+        profile_form = ProfileUpdateFrom(instance=request.user.profile)
+        return render(request, 'account/profile_edit.html', {'user_form': user_form, 'profile_form': profile_form})
+
+    def post(self, request):
+            user_form = UserUpdateFrom(instance=request.user, data=request.POST)
+            profile_form = ProfileUpdateFrom(instance=request.user.profile, data=request.POST,
+                                             files=request.POST)
+            if user_form.is_valid() and profile_form.is_valid():
+                user_form.save()
+                profile_form.save()
+                return redirect('user_profile')
+
+
