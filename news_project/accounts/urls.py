@@ -18,7 +18,6 @@ urlpatterns = [
     path('profile/', dashboard_view, name='user_profile'),
      path('singup/', user_register, name='user_register'),
    # path('singup/', SignUpView.as_view(), name='user_register'),
-    #path('profile/edit/', Edit_user, name='user_edit'),
+   # path('profile/edit/', Edit_user, name='user_edit'),
     path('profile/edit/', EditUserView.as_view(), name='user_edit'),
-
 ]

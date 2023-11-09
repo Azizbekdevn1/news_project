@@ -17,6 +17,5 @@ class Profile(models.Model):
     photo=models.ImageField(upload_to='users_photos/',blank=True,null=True)
     birthdate=models.DateField(null=True, blank=True)
     def __str__(self):
-
         return f"{self.user} profili"
 

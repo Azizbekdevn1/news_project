@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login
@@ -30,11 +32,14 @@ def user_login(request):
     else:
         form = LoginForm()
     return render(request, 'registration/login.html', {'form': form})
-
+@login_required
 def dashboard_view(request):
     user = request.user
+    person=Profile.objects.get(user=user)
+
     context={
-        'user':user
+        'user':user,
+        'person':person
     }
     return render(request,'pages/user_profile.html', context)
 
@@ -65,7 +70,7 @@ class SignUpView(CreateView):
    success_url = reverse_lazy('login')
    template_name = 'account/register.html'
 
-
+@login_required
 def Edit_user(request):
     if request.method =='POST':
         user_form =UserUpdateFrom(instance=request.user,data=request.POST)
@@ -74,12 +79,14 @@ def Edit_user(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            return redirect('user_profile')
     else:
         user_form=UserUpdateFrom(instance=request.user)
         profile_form=ProfileUpdateFrom(instance=request.user.profile)
     return render(request,'account/profile_edit.html',{'user_form':user_form,'profile_form':profile_form})
 
-class EditUserView(View):
+
+class EditUserView(LoginRequiredMixin,View):
 
     def get(self, request):
 

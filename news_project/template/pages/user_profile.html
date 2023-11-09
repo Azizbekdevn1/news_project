@@ -7,21 +7,24 @@ User profile
 {% endblock title %}
 
 {% block content %}
+
 <div class="container">
     <h3>
         Xush kelibsiz ,{{ user.username }}
     </h3>
+    <h3><a href="{% url 'logout' %}" class="text-danger">Log out</a></h3>
     <h2>Siz haqingizdagi ma'lumotlar</h2>
-    <label>Username:</label><input value="{{user.username}}" readonly><br />
+    {% if person.photo %}
+        <img src="{{ person.photo.url }}" width="100px">
+    {% endif %}
+    <label>Username:</label><input value="{{user.username}}" readonly><br/>
     <label>Email:</label><input value="{{user.email}}" readonly><br />
     <label>Ismingiz:</label><input value="{{user.first_name}}" readonly><br />
     <label>Familiyangiz:</label><input value="{{user.last_name}}" readonly><br />
-
-
-
-
-       <a href="{% url 'password_change' %}"><button  class="btn btn-primary ml-2" >Parolni almashtirish</button></a>
-
+    <a href="{% url 'password_change' %}"><button  class="btn btn-primary ml-2" style="margin:10px;border-radius:5px">Parolni almashtirish</button></a>
+    <a href="{% url 'user_edit' %}"><button  class="btn btn-success ml-2" style="margin:10px;border-radius:5px">Profilni o'zgartirish</button></a>
 </div>
+
+
 
 {% endblock content %}
