@@ -13,6 +13,6 @@ urlpatterns = [
     path('sport/', SportNewsView.as_view(), name='sport_news_page'),
     path('xorij/', XorijNewsView.as_view(), name='xorij_news_page'),
     path('techno/', TechnoNewsView.as_view(), name='techno_news_page'),
-
+    path('adminpage/',admin_page,name='admin_page'),
 ]
 

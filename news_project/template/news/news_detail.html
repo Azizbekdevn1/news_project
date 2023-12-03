@@ -38,6 +38,7 @@
 
                         </div>
                     </div>
+                {% if request.user.is_authenticated and request.user.is_superuser %}
                     <div class="card-footer text-center">
                         <a href="{% url 'news_update' news.slug %}" class="btn btn-primary" style="margin:10px;border-radius:5px">
                             Tahrirlash
@@ -50,5 +51,6 @@
                             Qo'shish
                         </a>
                     </div>
+                {% endif %}
 
 {% endblock %}

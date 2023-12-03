@@ -1,11 +1,12 @@
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-
+from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
+from .forms import ContactForm
 from .models import Category, News
-from .forms import ContactForm,NewsForm
-from django.views.generic import TemplateView, ListView,UpdateView, DeleteView,CreateView
-
 
 def news_list(request):
     news_lists = News.published.all()  # 2-usul
@@ -14,7 +15,7 @@ def news_list(request):
     }
     return render(request, 'news/news_list.html', context=context)
 
-
+#@login_required
 def news_detail(request, news):
     news = get_object_or_404(News, slug=news, status=News.Status.Published)
     context = {
@@ -120,20 +121,32 @@ class SportNewsView(ListView):
         return news
 
 
-class NewsUpdateView(UpdateView):
+class NewsUpdateView(LoginRequiredMixin,UpdateView):
     model = News
     fields = ('title', 'image', 'category', 'body', 'status',)
     template_name = 'crud/news_edit.html'
 
-
-class NewsDeleteView(DeleteView):
+class NewsDeleteView(LoginRequiredMixin,DeleteView):
     model = News
     template_name = 'crud/news_delete.html'
     success_url = reverse_lazy('home_page')
 
 
-class NewsCreateView(CreateView):
+class NewsCreateView(LoginRequiredMixin,UserPassesTestMixin,CreateView):
     model = News
     template_name = 'crud/news_create.html'
     fields = ('title','slug', 'image', 'category', 'status','body' )
     success_url = reverse_lazy('home_page')
+    def test_func(self):
+        return self.request.user.is_superuser
+
+
+@user_passes_test(lambda u: u.is_superuser)
+#Faqat super userlar admin pageni kora olishi uchun dekorator
+@login_required
+def admin_page(request):
+    admin_users=User.objects.filter(is_superuser=True)
+    context={
+        'admin_users': admin_users
+    }
+    return render(request, 'pages/admin_page.html',context)
