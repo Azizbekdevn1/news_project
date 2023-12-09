@@ -22,8 +22,12 @@
                             </span>
                             <span>
                                 <i class="fa fa-eye" aria-hidden="true" >
-                                    {% get_hit_count for news %}
+                                    {% get_hit_count for news %} |
                                 </i>
+                            </span>
+                            <span>
+                                <i class="fa fa-comment" aria-hidden="true"></i>
+                                {{ comment_count }}
                             </span>
                         </div>
 
