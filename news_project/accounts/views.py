@@ -4,13 +4,13 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate,login
 from django.views import View
-
 from .forms import LoginForm,UserRegistrationForm
 from django.views.generic import CreateView
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from .models import Profile
 from .forms import UserUpdateFrom,ProfileUpdateFrom
+
 
 def user_login(request):
     if request.method == 'POST':

@@ -82,6 +82,11 @@
           <li><a href="{% url 'sport_news_page' %}">Sport</a></li>
           <li><a href="{% url 'contact_page'%}">Biz bilan aloqa</a></li>
           <li><a href="pages/404.html">404 Page</a></li>
+          <li  style="margin-left:70px;margin-top:8px" >
+            <form method="get" action="{% url 'search_result' %}">
+              <input type="search" placeholder="Qidiruv.." name="q" class="form-control " >
+            </form>
+          </li>
         </ul>
       </div>
     </nav>

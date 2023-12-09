@@ -1,12 +1,14 @@
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.mixins import LoginRequiredMixin,UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, UpdateView, DeleteView, CreateView
-from .forms import ContactForm
+from .forms import ContactForm, CommentForm
 from .models import Category, News
+from news_project.custom_permessions import OnlyloggedSuperUser
 
 def news_list(request):
     news_lists = News.published.all()  # 2-usul
@@ -18,8 +20,26 @@ def news_list(request):
 #@login_required
 def news_detail(request, news):
     news = get_object_or_404(News, slug=news, status=News.Status.Published)
+    comments=news.comments.filter(active=True)
+    new_comment=None
+    if request.method == "POST":
+        comment_form =CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            #Yangi komment obketini yaratamiz lekin DB ga saqlamaymiz
+            new_comment=comment_form.save(commit=False)
+            new_comment.news=news
+            new_comment.user=request.user
+            #izoh egasini so'rov yuborayotgan userga bog'ladik
+            new_comment.save()
+            #ma'lumotlar bazasiga saqladik
+            comment_form=CommentForm()
+    else:
+        comment_form = CommentForm()
     context = {
-        'news': news
+        'news': news,
+        'comments':comments,
+        'new_comment':new_comment,
+        'comment_form':comment_form
     }
     return render(request, 'news/news_detail.html', context=context)
 
@@ -121,7 +141,7 @@ class SportNewsView(ListView):
         return news
 
 
-class NewsUpdateView(LoginRequiredMixin,UpdateView):
+class NewsUpdateView(OnlyloggedSuperUser,UpdateView):
     model = News
     fields = ('title', 'image', 'category', 'body', 'status',)
     template_name = 'crud/news_edit.html'
@@ -132,13 +152,12 @@ class NewsDeleteView(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('home_page')
 
 
-class NewsCreateView(LoginRequiredMixin,UserPassesTestMixin,CreateView):
+class NewsCreateView(OnlyloggedSuperUser,CreateView):
     model = News
     template_name = 'crud/news_create.html'
     fields = ('title','slug', 'image', 'category', 'status','body' )
     success_url = reverse_lazy('home_page')
-    def test_func(self):
-        return self.request.user.is_superuser
+
 
 
 @user_passes_test(lambda u: u.is_superuser)
@@ -150,3 +169,15 @@ def admin_page(request):
         'admin_users': admin_users
     }
     return render(request, 'pages/admin_page.html',context)
+
+class SearchResultListView(ListView):
+    model=News
+    template_name='news/search_results.html'
+    context_object_name = "Barcha_yangiliklar"
+
+    def queryset(self):
+        query=self.request.GET.get('q')
+        return News.objects.filter(
+            Q(title__icontains=query) | Q(body__icontains=query)
+        )
+

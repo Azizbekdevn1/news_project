@@ -14,5 +14,6 @@ urlpatterns = [
     path('xorij/', XorijNewsView.as_view(), name='xorij_news_page'),
     path('techno/', TechnoNewsView.as_view(), name='techno_news_page'),
     path('adminpage/',admin_page,name='admin_page'),
+    path('searchresult/', SearchResultListView.as_view(), name='search_result'),
 ]
 
