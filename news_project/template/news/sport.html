@@ -4,7 +4,7 @@
 {% block title %}
 Sport xabarlar
 {% endblock title %}
-
+{% load hitcount_tags %}
 {% block content %}
 
 
@@ -35,6 +35,7 @@ Sport xabarlar
                                             {{item.title}}
                                         </a>
                                     </h1>
+                                    <p style="font-size:12px;margin-left:5px;">view:<i class="fa fa-eye" aria-hidden="true"></i>{% get_hit_count for item %}</p>
                                 </div><!-- End of info-->
                             </div><!-- End of media-info-->
                         </div><!-- End of news__item-->

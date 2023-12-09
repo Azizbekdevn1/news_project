@@ -1,6 +1,6 @@
 {% extends 'news/base.html' %}
 {% load static %}
-
+{% load hitcount_tags %}
 {% block title %}
 {{news.title}}
 {% endblock title %}
@@ -14,10 +14,15 @@
                             <h2 class="post__title" style="font-size:20px;text-align:center">{{news.title}}</h2>
                         </div>
 
-                        <div class="article__content-meta"style="font-size:15px;text-align:center">
-                            <span class="date-time" >
+                        <div class="article__content-meta flex"style="font-size:15px;text-align:center">
+                            <span class="date-time col-6" >
                                 <i class="icon clock-icon is_smaller" >
-                                    {{news.published_time}}
+                                    {{news.published_time}} |
+                                </i>
+                            </span>
+                            <span>
+                                <i class="fa fa-eye" aria-hidden="true" >
+                                    {% get_hit_count for news %}
                                 </i>
                             </span>
                         </div>
@@ -25,7 +30,6 @@
                         <div class="media"   align="center" style="margin-bottom:20px">
                             <img src="{{news.image.url}}" width="50%" style="border-radius:5px"
                                 alt="AQSh hukumati Grin karta uchun ajratilgan 55 mingta vizani tarqatib bo‘ldi">
-
                         </div>
                         <br>
 
