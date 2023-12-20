@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'news_app',
     'crispy_bootstrap5',
     'hitcount',
+    'modeltranslation',
 ]
 
 MIDDLEWARE = [
@@ -119,11 +120,18 @@ USE_I18N = True
 USE_TZ = True
 from django.utils.translation import gettext_lazy as _
 
+
+
+
 LANGUAGES=[
     ('uz', _("Uzbek")),
     ('en', _("English")),
     ('ru', _("Russian")),
 ]
+
+
+MODELTRANSLATION_DEFAULT_LANGUAGE='uz'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
