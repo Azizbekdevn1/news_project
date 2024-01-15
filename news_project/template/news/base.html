@@ -38,11 +38,11 @@
         <div class="header_top">
           <div class="header_top_left">
             <ul class="top_nav">
-              <li><a href="{% url 'home_page'%}">Bosh sahifa</a></li>
-              <li><a href="#">Biz haqimizda</a></li>
+              <li><a href="{% url 'home_page'%}">{% blocktrans %}Bosh sahifa{% endblocktrans %}</a></li>
+              <li><a href="#">{% blocktrans %} Biz haqimizda{% endblocktrans %}</a></li>
               <li><a href="{% url 'contact_page'%}">Biz bilan aloqa</a></li>
               {% if user.is_authenticated and user.is_superuser %}
-              <li><a href="{% url 'admin_page'%}">Admin sahifasi</a></li>
+              <li><a href="{% url 'admin_page'%}">{% blocktrans %}Admin sahifasi{% endblocktrans %}</a></li>
               {% endif %}
               <li>
                 <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
@@ -98,11 +98,11 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav main_nav">
           <li class="active"><a href="{% url 'home_page' %}"><span class="fa fa-home desktop-home"></span><span class="mobile-show">Bosh sahifa</span></a></li>
-          <li><a href="{% url 'local_news_page' %}">Mahalliy</a></li>
-          <li><a href="{% url 'xorij_news_page' %}">Xorij</a></li>
-          <li><a href="{% url 'techno_news_page' %}">Texnologiya</a></li>
-          <li><a href="{% url 'sport_news_page' %}">Sport</a></li>
-          <li><a href="{% url 'contact_page'%}">Biz bilan aloqa</a></li>
+          <li><a href="{% url 'local_news_page' %}">{% blocktrans %}Mahalliy{% endblocktrans %}</a></li>
+          <li><a href="{% url 'xorij_news_page' %}">{% blocktrans %}Xorij{% endblocktrans %}</a></li>
+          <li><a href="{% url 'techno_news_page' %}">{% blocktrans %}Texnologiya{% endblocktrans %}</a></li>
+          <li><a href="{% url 'sport_news_page' %}">{% blocktrans %}Sport{% endblocktrans %}</a></li>
+          <li><a href="{% url 'contact_page'%}">{% blocktrans %}Biz bilan aloqa{% endblocktrans %}</a></li>
           <li><a href="pages/404.html">404 Page</a></li>
           <li  style="margin-left:70px;margin-top:8px" >
             <form method="get" action="{% url 'search_result' %}">
@@ -116,7 +116,7 @@
   <section id="newsSection">
     <div class="row">
       <div class="col-lg-12 col-md-12">
-        <div class="latest_newsarea"> <span>So'nggi yangiliklar</span>
+        <div class="latest_newsarea"> <span>{% blocktrans %}So'nggi yangiliklar{% endblocktrans %}</span>
           <ul id="ticker01" class="news_sticker">
             {% for news in latest_news %}
             <li><a href="#"><img src="{{ news.image.url }}" alt="">{{ news.title }}</a></li>
@@ -153,7 +153,7 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInDown">
-            <h2>Teglar</h2>
+            <h2>{% blocktrans %}Teglar{% endblocktrans %}</h2>
             <ul class="tag_nav">
               {% for item in categories %}
               <li><a href="#">{{item.name}}</a></li>
@@ -163,10 +163,9 @@
         </div>
         <div class="col-lg-4 col-md-4 col-sm-4">
           <div class="footer_widget wow fadeInRightBig">
-            <h2>Biz bilan aloqa</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <h2>{% blocktrans %}Biz bilan aloqa{% endblocktrans %}</h2>
             <address>
-           Uzbekistan country,Tashkent city ,Mirzo Ulugbek district TTZ-4 24-uy
+           Uzbekiston Respublikasi,Toshkent shahar,Mirzo Ulugbek tumani TTZ-4 24-uy
             </address>
           </div>
         </div>

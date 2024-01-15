@@ -8,6 +8,7 @@ django = "==4.0"
 pillow = "*"
 django-crispy-forms = "*"
 django-modeltranslation = "*"
+python-gettext = "*"
 
 [dev-packages]
 

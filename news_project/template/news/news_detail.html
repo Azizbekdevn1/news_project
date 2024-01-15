@@ -53,10 +53,10 @@
                         </a>
 
                         <a href="{% url 'news_delete' news.slug %}" class="btn btn-danger" style="margin:10px;border-radius:5px">
-                            O‘chirish
+                              O‘chirish
                         </a>
                         <a href="{% url 'news_create'  %}" class="btn btn-success" style="margin:10px;border-radius:5px">
-                            Qo'shish
+                              Qo'shish
                         </a>
                     </div>
                     {% endif %}
@@ -74,11 +74,11 @@
                         {% if user.is_authenticated %}
                             <div class="col-md-8 card mb-4 mt-3">
                                 <div class="card-body">
-                                    <h3>Izoh qoldirish</h3>
+                                    <h3>   Izoh qoldirish </h3>
                                     <form method="POST" style="margin-top:1.3 em">{% csrf_token %}
                                         {{ comment_form.as_p }}
                                         <button type="submit" class="btn btn-primary btn-lg" style="margin:10px;border-radius:5px">
-                                            Yuborish
+                                               Yuborish
                                         </button>
                                     </form>
                                 </div>
@@ -86,11 +86,11 @@
                         {% else %}
                             <div class="card-body">
                                 <p class="text-danger">
-                                    Faqatgina ro'yhatdan o'tgan foydalanuvchilargina izoh qoldirishi mumkin.
+                                     Faqatgina ro'yhatdan o'tgan foydalanuvchilargina izoh qoldirishi mumkin.
                                 </p>
                                 <p>
-                                    Izoh qoldirish uchun <a href="{% url 'user_register' %}">ro'yhatdan o'ting</a> yoki <a href="{% url 'login' %}">login</a>
-                                    qiling.
+                                   Izoh qoldirish uchun   <a href="{% url 'user_register' %}"> ro'yhatdan o'ting</a> yoki <a href="{% url 'login' %}">login</a>
+                                      qiling.
                                 </p>
                             </div>
                         {% endif %}

@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-24 00:04+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\news_project\settings.py:127
+msgid "Uzbek"
+msgstr ""
+
+#: .\news_project\settings.py:128
+msgid "English"
+msgstr ""
+
+#: .\news_project\settings.py:129
+msgid "Russian"
+msgstr ""
+
+#: .\template\news\base.html:41
+msgid "Bosh sahifa"
+msgstr ""
+
+#: .\template\news\base.html:42
+msgid "Bosh Biz haqimizda"
+msgstr ""
+
+#: .\template\news\base.html:45
+msgid "Admin sahifasi"
+msgstr ""
+
+#: .\template\news\base.html:101
+msgid "Mahalliy"
+msgstr ""
+
+#: .\template\news\base.html:102
+msgid "Xorij"
+msgstr ""
+
+#: .\template\news\base.html:103
+msgid "Texnologiya"
+msgstr ""
+
+#: .\template\news\base.html:104 .\template\news\index.html:173
+msgid "Sport"
+msgstr ""
+
+#: .\template\news\base.html:105 .\template\news\base.html:166
+msgid "Biz bilan aloqa"
+msgstr ""
+
+#: .\template\news\base.html:119
+msgid "So'nggi yangiliklar"
+msgstr ""
+
+#: .\template\news\base.html:156
+msgid "Teglar"
+msgstr ""
+
+#: .\template\news\index.html:7
+msgid " Bosh sahifa "
+msgstr ""
+
+#: .\template\news\index.html:27
+msgid " So'nggi yangiliklar "
+msgstr ""
+
+#: .\template\news\index.html:50
+msgid " Mahalliy "
+msgstr ""
+
+#: .\template\news\index.html:82
+msgid " Xorij xabarlari "
+msgstr ""
+
+#: .\template\news\index.html:110
+msgid " Texnologiya "
+msgstr ""
+
+#: .\template\news\index.html:138
+msgid "Photography"
+msgstr ""
+
+#: .\template\news\index.html:207
+msgid "Ommabop"
+msgstr ""
+
+#: .\template\news\index.html:277
+msgid " Homiy "
+msgstr ""
+
+#: .\template\news\index.html:280
+msgid "Kategoriyalar "
+msgstr ""
+
+#: .\template\news\index.html:282
+msgid "Kategoriyani tanlang"
+msgstr ""
+
+#: .\template\news\local.html:5
+msgid "Mahalliy xabarlar "
+msgstr ""
+
+#: .\template\news\news_detail.html:52
+msgid "   Tahrirlash "
+msgstr ""
+
+#: .\template\news\news_detail.html:56
+msgid "   O‘chirish "
+msgstr ""
+
+#: .\template\news\news_detail.html:59
+msgid "  Qo'shish  "
+msgstr ""
+
+#: .\template\news\news_detail.html:77
+msgid "   Izoh qoldirish "
+msgstr ""
+
+#: .\template\news\news_detail.html:81
+msgid "   Yuborish "
+msgstr ""
+
+#: .\template\news\news_detail.html:89
+msgid ""
+"   Faqatgina ro'yhatdan o'tgan foydalanuvchilargina izoh qoldirishi mumkin. "
+msgstr ""
+
+#: .\template\news\news_detail.html:92
+msgid "   Izoh qoldirish uchun  "
+msgstr ""
+
+#: .\template\news\news_detail.html:92
+msgid "  ro'yhatdan o'ting"
+msgstr ""
+
+#: .\template\news\news_detail.html:93
+msgid "    qiling."
+msgstr ""
